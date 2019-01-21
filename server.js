@@ -28,19 +28,16 @@ app.use(session(
   }
 ));
 
-  }
-));
-
 
 
 //-------------------------------------------Database----------------------------------
 
 
 var database_config = {
-    user: process.env.DATABASE_USERNAME || 'j',
+    user: process.env.DATABASE_USERNAME || 'Britton',
     host: process.env.DATABASE_HOST||'localhost',
-    database: process.env.DATABASE_NAME||'highlander',
-    password: process.env.DATABASE_PASSWORD||'strong_pass',
+    database: process.env.DATABASE_NAME||'surflog',
+    password: process.env.DATABASE_PASSWORD||'14SecTOOBS',
     port: 5432
 };
 
@@ -83,7 +80,7 @@ console.log(now);
     };
 
 
-    var query_string = 'select * from post_info order by up_vote desc';   //select all posts from the database in decending order.
+    var query_string = 'select * from post_info';   //select all posts from the database in decending order.
 
     pool.connect(function(err,client,done){   //start a pool connection.
 

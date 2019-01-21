@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-  <title>Highlander</title>
+  <title>Surf Logs</title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -14,6 +14,10 @@
 
 
   <style type="text/css">
+
+  .body {
+      font-family: Helvetica Neue;
+  }
   .navbar-brand{
     font-weight: bold;
     font-size: 30px;
@@ -94,21 +98,20 @@
    }
    .bigBg {
             /* The image used */
-            background-image: url("http://i63.tinypic.com/okq1xu.jpg");
+            background-image: url("https://i.imgur.com/KV30LTV.jpg");
             /* Center and scale the image nicely */
             background-position: top;
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: 100%;
             width: 100%;
-            height: 0;
-            padding-bottom: 50%;
+            height: 500px;
         }
     .mainHeader{
         font-size: 45pt;
         color: white;
         padding-top: 100px;
         padding-bottom:10px;
-        font-family: Trattatello, fantasy;
+        font-family: Helvetica Neue;
     }
     .explore {
         width: 100%;
@@ -137,7 +140,7 @@
     .h_desc {
         font-size: 20pt;
         color: white;
-        font-family: courier new;
+        font-family: Helvetica Neue;
         font-weight: bold;
     }
     .h_join {
@@ -146,7 +149,7 @@
         border: 2pt solid white;
         font-size: 15pt;
         color: white;
-        font-family: courier new;
+        font-family: Helvetica Neue;
         padding: 5px;
         font-weight:bold;
         transition: 0.3s;
@@ -176,36 +179,29 @@
                     <li class="nav-item">
                         <div class="column">
                             <div class="row">
-                                <a href="/sign_in" class="nav-link topNav" style="color:white; font-family: courier new; font-weight:bold;">Sign In</a>
+                                <a href="/sign_in" class="nav-link topNav" style="color:white; font-family: Helvetica Neue; font-weight:bold;">Sign In</a>
                             </div>
 
-                        </li>
-
-                </ul>
-            </div>
+                        </div>
+            </li>
+        </ul>
         </div>
     </nav>
 
-    <!-- First View -->
+<!-- First View -->
     <section class="img-responsive bigBg">
         <div class="container">
             <div>
-                <a id="explore_link" href="/explore/default"><h1 class="mainHeader">Explore...</h1> </a>
-                <br>
-                <p class="h_desc">Go anywhere with local knowledge</p>
-                <br>
-                <a href="/sign_up" class="h_join">Join us</a>
+                <a id="explore_link" href="/explore/default"><h3 class="mainHeader">Never forget a session again</h3> </a>
+                <a href="/sign_up" class="h_join">Start logging</a>
             </div>
     </section>
-
-
-
 <br>
 
 <!-- Navigation -->
 <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-white sticky-top" style="transition: top 0.3s;">
     <div class="container">
-        <a class="navbar-brand" href="/">Highlander</a>
+        <a class="navbar-brand" href="/">Surf Logs</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -214,7 +210,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="/explore/default" class="nav-link">Explore</a>
+                    <a href="/explore/default" class="nav-link">Spot Check</a>
                 </li>
                 <li class="nav-item">
                     <a href="/sign_up" class="nav-link">Sign Up</a>
@@ -246,7 +242,7 @@
       <% row1.forEach(function(post){ %>
       <div class="each_col">
         <a href="/post_detail/<%=post.post_id%>"><img src="<%= post.image_1 %>" class="rounded index_pic"></a>
-        <p><span class="title"><%= post.title %></span><span class="up"><%= post.up_vote %></span><span class="down"><%= post.down_vote %></span><i class="fas fa-sort-up"></i><i class="fas fa-sort-down"></i><a href="/user_info/<%=post.user_id%>"><img src="<%=post.image%>" class="rounded-circle user_pic"/></a></p>
+        <p><span class="title"><%= post.title %></span><a href="/user_info/<%=post.user_id%>"><img src="<%=post.image%>" class="rounded-circle user_pic"/></a></p>
       </div>
       <% }); %>
     </div>
@@ -257,7 +253,7 @@
       <% row2.forEach(function(post){ %>
       <div class="each_col">
         <a href="/post_detail/<%=post.post_id%>"><img src="<%= post.image_1 %>" class="rounded index_pic"></a>
-        <p><span class="title"><%= post.title %></span><span class="up"><%= post.up_vote %></span><span class="down"><%= post.down_vote %></span><i class="fas fa-sort-up"></i><i class="fas fa-sort-down"></i><a href="/user_info/<%=post.user_id%>"><img src="<%=post.image%>" class="rounded-circle user_pic"/></a></p>
+        <p><span class="title"><%= post.title %></span><a href="/user_info/<%=post.user_id%>"><img src="<%=post.image%>" class="rounded-circle user_pic"/></a></p>
       </div>
       <% }); %>
     </div>
@@ -267,14 +263,11 @@
       <% row3.forEach(function(post){ %>
       <div class="each_col">
         <a href="/post_detail/<%=post.post_id%>"><img src="<%= post.image_1 %>" class="rounded index_pic"></a>
-        <p><span class="title"><%= post.title %></span><span class="up"><%= post.up_vote %></span><span class="down"><%= post.down_vote %></span><i class="fas fa-sort-up"></i><i class="fas fa-sort-down"></i><a href="/user_info/<%=post.user_id%>"><img src="<%=post.image%>" class="rounded-circle user_pic"/></a></p>
+        <p><span class="title"><%= post.title %></span><a href="/user_info/<%=post.user_id%>"><img src="<%=post.image%>" class="rounded-circle user_pic"/></a></p>
       </div>
       <% }); %>
     </div>
 
-
-        <a href="/post_detail/<%=post.post_id%>"><img src="<%= post.image_1 %>" class="rounded index_pic"></a>
-        <p><span class="title"><%= post.title %></span><span class="up"><%= post.up_vote %></span><span class="down"><%= post.down_vote %></span><i class="fas fa-sort-up"></i><i class="fas fa-sort-down"></i><a href="/user_info/<%=post.user_id%>"><img src="<%=post.image%>" class="rounded-circle user_pic"/></a></p>
 
   </div>
 
