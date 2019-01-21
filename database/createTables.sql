@@ -34,4 +34,4 @@ create table posts (
 
 create view thumbnails as select post_id, image_1, title from posts;
 create view user_info as select user_id, user_name, image, about, created, last_active from users;
-create view post_info as select A.user_id,A.user_name, A.image,B.post_id, B.title, B.image_1, B.image_2, B.image_3,B.description,B.created from users as A, posts as B where A.user_id = B.user_id;
+create view post_info as select A.user_id,A.user_name, A.image,B.post_id, B.title, B.image_1, B.image_2, B.image_3,B.description,B.created, B.surf_spot from users as A, posts as B where A.user_id = B.user_id;

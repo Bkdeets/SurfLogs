@@ -17,6 +17,7 @@ var app = express();
 app.set("view engine","ejs");
 //Enable body-parser.
 app.use(body_parser.urlencoded({extended: true}));
+app.use(express.static(__dirname + '/views'));
 
 
 app.use(session(
@@ -79,22 +80,21 @@ console.log(now);
       var user= {id:req.session.user.id};
     };
 
-
     var query_string = 'select * from post_info';   //select all posts from the database in decending order.
 
     pool.connect(function(err,client,done){   //start a pool connection.
 
       if(err) throw err;
 
-      client.query(query_string,function(err, result){      //check out a client from the pool, then use this client to perform a query task.
+      //check out a client from the pool, then use this client to perform a query task.
+      client.query(query_string,function(err, result){
 
-        var posts = result.rows;          //the returned result contains: command, fields, rows, and a few other arrays. The data we want is in the rows array.
+        //the returned result contains: command, fields, rows, and a few other arrays. The data we want is in the rows array.
+        var posts = result.rows;
+        
 
-        var first_row = posts.slice(0,3);   //break down the rows array into just 9, so we can display them at the index page.
-        var second_row = posts.slice(3,6);
-        var third_row = posts.slice(6,9)
-
-        res.render("index", {row1:first_row,row2:second_row,row3:third_row,user:user});  //when render the index page, express also pass the following javascript objects.
+        //when render the index page, express also pass the following javascript objects.
+        res.render("index", {posts:posts,user:user});
 
       }
       );
